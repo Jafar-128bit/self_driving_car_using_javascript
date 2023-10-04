@@ -28,7 +28,7 @@ const carCtx = carCanvas.getContext('2d');
 const networkCtx = networkCanvas.getContext('2d');
 
 const road = new Road(carCanvas.width / 2, carCanvas.width * 0.9);
-const cars = generateCars(50);//Number of cars
+let cars = generateCars(50);//Number of cars
 
 let bestCar = cars[0];
 let reloadPage = true;
@@ -94,9 +94,16 @@ const reRun = () => {
 
 function animate(time) {
   for (let i = 0; i < traffic.length; i++) traffic[i].update(road.borders, []);
-  for (let i = 0; i < cars.length; i++) cars[i].update(road.borders, traffic);
+  for (let i = 0; i < cars.length; i++) {
+    cars[i].update(road.borders, traffic);
+  }
 
   bestCar = cars.find(c => c.y === Math.min(...cars.map(c => c.y)));
+  cars.find((c) => c.y === Math.max(...cars.map((c)=> c.y)) && c.y >= 100).damaged = true;
+  cars.find((c) => c.speed <= 0.1).damaged = true;
+
+  console.log(cars.map(c => c.damaged).filter(damaged => damaged === false));
+
   const carInfo = bestCar.info();
 
   carCanvas.height = window.innerHeight;
