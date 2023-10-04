@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <link rel='stylesheet' href='style.css'>
+  <title>Self Driving Car</title>
+</head>
+<body>
+<canvas id='myCanvas'></canvas>
+<div id='verticalButtons'>
+  <button onclick='saveCar()'>Save</button>
+  <button onclick='deleteCar()'>Delete</button>
+</div>
+<canvas id='networkCanvas'></canvas>
+<div class='infoContainer'>
+  <p class='infoText_Title'>Car Info</p>
+
+  <div class='infoSubContainer'>
+    <p class='infoText_Content' id='pos_x'>0</p>
+    <p class='infoText_Content' id='pos_y'>0</p>
+    <p class='infoText_Content' id='angle'>0</p>
+  </div>
+
+  <div class='infoSubContainer'>
+    <p class='infoText_Content' id='fwd'>Forward</p>
+    <p class='infoText_Content' id='rev'>Revers</p>
+    <p class='infoText_Content' id='left'>Left</p>
+    <p class='infoText_Content' id='right'>Right</p>
+  </div>
+
+  <div class='infoSubContainer'>
+    <p class='infoText_Content' id='speed'>0</p>
+    <p class='infoText_Content' id='accr'>0</p>
+    <p class='infoText_Content' id='fric'>0</p>
+    <p class='infoText_Content' id='mx_speed'>0</p>
+  </div>
+</div>
+
+<script  src='src/utils/getRGBA.js'></script>
+<script  src='src/utils/polysIntersect.js'></script>
+<script  src='src/utils/getIntersection.js'></script>
+<script  src='src/utils/lerp.js'></script>
+<script  src='src/visualizer.js'></script>
+<script  src='src/network.js'></script>
+<script  src='src/sensor.js'></script>
+<script  src='src/road.js'></script>
+<script  src='src/controls.js'></script>
+<script  src='src/car.js'></script>
+<script defer  src='main.js'></script>
+</body>
+</html>
